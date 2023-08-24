@@ -1,26 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+using TMPro;
 
-public class BallController : MonoBehaviour
+public class BasketballController : MonoBehaviour
 {
-    Rigidbody rb;
-    public Transform RightHand;
-    public float initialForce;
-    public float scaleInitialForce;
     public GameObject winnerText;
 
     private bool movingDown;
     private float lastHeight;
-    private Vector3 direction;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        RightHand = GameObject.FindWithTag("RH").transform;
-        rb=GetComponent<Rigidbody>();
-        direction=RightHand.forward;
-        rb.AddForce(scaleInitialForce*initialForce*direction);
         movingDown=false;
         lastHeight=this.transform.position[1];
     }
@@ -37,12 +30,8 @@ public class BallController : MonoBehaviour
             movingDown=false;
         }
         lastHeight=this.transform.position[1];
-    }
 
-    public void Setup(float percentage, GameObject winnerMessage)
-    {
-        scaleInitialForce = percentage/100f;
-        winnerText = winnerMessage;
+        
     }
 
     //When the ball goes in the goal

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PreBlockController : MonoBehaviour
 {
     public Transform LeftHand;
+    public Transform LeftRod;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,7 @@ public class PreBlockController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = LeftHand.position + 0.5f*LeftHand.forward;
+        transform.position = LeftHand.position + (0.25f + transform.localScale[2]/2)*LeftHand.forward.normalized;
         transform.rotation = LeftHand.rotation;
     }
 }
